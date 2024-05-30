@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="output.css" />
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1;
+        padding-top: 100px; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto;
+        background-color: rgb(0, 0, 0); 
+        background-color: rgba(0, 0, 0, 0.4); 
+      }
+
+      .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+      }
+
+      @-webkit-keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      @keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        padding-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal-header {
+        padding: 8px 16px;
+        background-color: #3B82F6;
+        color: white;
+      }
+
+      .modal-body {
+        padding: 6px 16px;
+      }
+
+    </style>
+  </head>
+  <body class="flex items-center justify-center h-screen bg-white">
+    <div class="flex flex-col items-center">
+      <div class="bg-blue-500 rounded-lg px-5 py-3 mb-5"><h1 class="text-center font-bold text-white">Time Complexity of Previous Week Task</h1></div>
+    
+      <button
+        id="myBtn1"
+        class="w-44 h-16 p-4 mb-4 rounded font-bold shadow-lg bg-blue-500 hover:bg-blue-600 text-white focus:outline-none"
+      >
+        Click for Day 1
+      </button>
+
+      <button
+        id="myBtn2"
+        class="w-44 h-16 p-4 mb-4 rounded font-bold shadow-lg bg-blue-500 hover:bg-blue-600 text-white focus:outline-none"
+      >
+        Click for Day 2
+      </button>
+
+      <button
+        id="myBtn3"
+        class="w-44 h-16 p-4 mb-4 rounded font-bold shadow-lg bg-blue-500 hover:bg-blue-600 text-white focus:outline-none"
+      >
+        Click for Day 3
+      </button>
+
+      <button
+        id="myBtn4"
+        class="w-44 h-16 p-4 mb-4 rounded font-bold shadow-lg bg-blue-500 hover:bg-blue-600 text-white focus:outline-none"
+      >
+        Click for Day 4
+      </button>
+
+      <button
+        id="myBtn5"
+        class="w-44 h-16 p-4 rounded font-bold shadow-lg bg-blue-500 hover:bg-blue-600 text-white focus:outline-none"
+      >
+        Click for Day 5,6
+      </button>
+    </div>
+
+    <div id="myModal1" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2 class="font-bold">Time Complexity Analysis for Day 1</h2>
+        </div>
+        <div class="modal-body">
+          <h3 class="font-bold">Parsing Input:</h3>
+          <p>The code extracts and parses the day, month, and year inputs. Parsing these values takes constant time, so it's O(1).</p>
+          <h3 class="font-bold">Validation:</h3>
+          <p>There are several if conditions checking the validity of the inputs (e.g., day, month, and year). In the worst case, each condition might be checked individually, so this part is O(1).</p>
+          <h3 class="font-bold">Date Calculations:</h3>
+          <p>Calculating the age involves creating Date objects, subtracting them, and performing some basic arithmetic. This part is also O(1) since it involves a fixed number of operations</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal2" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2 class="font-bold">Time Complexity Analysis for Day 2</h2>
+        </div>
+        <div class="modal-body">
+          <h3 class="font-bold">Initialization of Notification Count:</h3>
+          <p>It initializes initialNotificationCount based on the number of unread notifications in notificationArray. This step has a time complexity of O(n), where n is the length of notificationArray.</p>
+          <h3 class="font-bold">Creation of Notification Elements:</h3>
+          <p>It iterates over each element in notificationArray and creates a DOM element for each notification. The creation of each element is O(1), but since it does this for each element in notificationArray, the overall complexity is O(n).</p>
+          <h3 class="font-bold">Event Listeners:</h3>
+          <p>It adds click event listeners to each notification element and updates the notificationArray and the UI accordingly. The event listener has a constant time complexity for each click, but if we consider the worst case where all notifications are unread, it's O(n).</p>
+          <h3 class="font-bold">Mark All as Read Button:</h3>
+          <p>It adds a click event listener to the "Mark All as Read" button, which marks all notifications as read. This also has a time complexity of O(n) in the worst case.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal3" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2 class="font-bold">Time Complexity Analysis for Day 3</h2>
+        </div>
+        <div class="modal-body">
+          <h3 class="font-bold">Theme Switching Logic:</h3>
+          <p>The event listeners have constant time complexity for each click, and the logic inside them is also O(1).</p>
+          <h3 class="font-bold">Rating Submission Logic :</h3>
+          <p>The submitBtn function involves modifying the class of HTML elements, which is generally O(1)..</p>
+          <h3 class="font-bold">Typing Animation:</h3>
+          <p>The typeWriter function implements a typing animation and involves iterating over characters in the input text. The time complexity of this function is O(n), where n is the length of the input text..</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal4" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2 class="font-bold">Time Complexity Analysis for Day 4</h2>
+        </div>
+        <div class="modal-body">
+          <h3 class="font-bold">Event Listeners:</h3>
+          <p>Adding event listeners to DOM elements has a time complexity of O(1) for each listener. The listeners perform basic operations when events occur, and their complexity is not dependent on the number of elements in the DOM.</p>
+          <h3 class="font-bold">Functions:</h3>
+          <p>The functions involve basic arithmetic operations and DOM manipulation, and their time complexity is O(1) for each function call. The calculations inside calculateTip involve basic arithmetic operations on numeric values, which are constant time.</p>
+          <h3 class="font-bold">Loops:</h3>
+          <p>The loop iterates over a fixed number of elements (percentage buttons), so its time complexity is O(1).</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal5" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2 class="font-bold">Time Complexity Analysis for Day 5 & 6</h2>
+        </div>
+        <div class="modal-body">
+          <h3 class="font-bold">DOM Manipulations:</h3>
+          <p>The getElementById and style modification operations involved in openNav and closeNav are basic DOM operations with constant time complexity.</p>
+          <h3 class="font-bold">Overall Time Complexity:</h3>
+          <p>The overall time complexity of this function is considered constant time (O(1)). Regardless of the size of the data or the number of users, the number of operations executed by the function remains relatively fixed.</p>
+          <h3 class="font-bold">Loops:</h3>
+          <p>The loop iterates over a fixed number of elements (percentage buttons), so its time complexity is O(1).</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const modals = [
+        document.getElementById("myModal1"),
+        document.getElementById("myModal2"),
+        document.getElementById("myModal3"),
+        document.getElementById("myModal4"),
+        document.getElementById("myModal5"),
+      ];
+
+      const buttons = ["myBtn1", "myBtn2", "myBtn3", "myBtn4", "myBtn5"];
+
+        buttons.forEach((buttonId, index) => {
+        const button = document.getElementById(buttonId);
+        const modal = modals[index];
+
+        button.addEventListener("click", () => {
+          modal.style.display = "block";
+        });
+
+        const closeBtn = modal.querySelector(".close");
+        closeBtn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
